@@ -1707,6 +1707,21 @@ offsets = {
     "WeightPointerOES" : 1671,
     "RenderbufferStorageMultisampleIMG" : 1672,
     "FramebufferTexture2DMultisampleIMG" : 1673,
+    "IsRenderbufferEXT" : 1674,
+    "DeleteRenderbuffersEXT" : 1675,
+    "GenRenderbuffersEXT" : 1676,
+    "RenderbufferStorageEXT" : 1677,
+    "GetRenderbufferParameterivEXT" : 1678,
+    "IsFramebufferEXT" : 1679,
+    "DeleteFramebuffersEXT" : 1680,
+    "GenFramebuffersEXT" : 1681,
+    "CheckFramebufferStatusEXT" : 1682,
+    "FramebufferTexture1DEXT" : 1683,
+    "FramebufferTexture2DEXT" : 1684,
+    "FramebufferTexture3DEXT" : 1685,
+    "FramebufferRenderbufferEXT" : 1686,
+    "GetFramebufferAttachmentParameterivEXT" : 1687,
+    "GenerateMipmapEXT" : 1688,
 }
 
 functions = [
