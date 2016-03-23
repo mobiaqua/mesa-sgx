@@ -1722,6 +1722,7 @@ offsets = {
     "FramebufferRenderbufferEXT" : 1686,
     "GetFramebufferAttachmentParameterivEXT" : 1687,
     "GenerateMipmapEXT" : 1688,
+    "GetIntegeri_vIMG": 1689,
 }
 
 functions = [
