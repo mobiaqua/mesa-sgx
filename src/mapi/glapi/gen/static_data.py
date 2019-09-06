@@ -1723,6 +1723,9 @@ offsets = {
     "GetFramebufferAttachmentParameterivEXT" : 1687,
     "GenerateMipmapEXT" : 1688,
     "GetIntegeri_vIMG": 1689,
+    "TexStorage1DEXT": 1690,
+    "TexStorage2DEXT": 1691,
+    "TexStorage3DEXT": 1692,
 }
 
 functions = [
