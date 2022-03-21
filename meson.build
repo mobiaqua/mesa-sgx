@@ -196,8 +196,8 @@ if gallium_drivers.contains('auto')
       ]
     elif ['arm', 'aarch64'].contains(host_machine.cpu_family())
       gallium_drivers = [
-        'v3d', 'vc4', 'freedreno', 'etnaviv', 'nouveau', 'svga',
-        'tegra', 'virgl', 'lima', 'panfrost', 'swrast'
+        'v3d', 'vc4', 'freedreno', 'etnaviv', 'nouveau',
+        'tegra', 'virgl', 'lima', 'panfrost', 'swrast', 'sgx'
       ]
     elif ['mips', 'mips64', 'riscv32', 'riscv64'].contains(host_machine.cpu_family())
       gallium_drivers = [
@@ -234,6 +234,8 @@ with_gallium_lima = gallium_drivers.contains('lima')
 with_gallium_zink = gallium_drivers.contains('zink')
 with_gallium_d3d12 = gallium_drivers.contains('d3d12')
 with_gallium_asahi = gallium_drivers.contains('asahi')
+with_gallium_sgx = gallium_drivers.contains('sgx')
+
 foreach gallium_driver : gallium_drivers
   pre_args += '-DHAVE_@0@'.format(gallium_driver.to_upper())
 endforeach
@@ -245,7 +247,19 @@ if not system_has_kms_drm
    with_gallium_kmsro = false
 endif
 
+if with_gallium_sgx
+  gallium_sgx_alias = get_option('gallium-sgx-alias')
+  if gallium_sgx_alias == 'sgx'
+    gallium_sgx_alias = ''
+  endif
+  with_gallium_sgx_alias = gallium_sgx_alias != ''
+else
+  gallium_sgx_alias = ''
+  with_gallium_sgx_alias = false
+endif
+
 with_dri = false
+
 if with_gallium and system_has_kms_drm
   _glx = get_option('glx')
   _egl = get_option('egl')

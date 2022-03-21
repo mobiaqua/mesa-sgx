@@ -151,6 +151,16 @@ if with_gallium_svga
 else
   driver_svga = declare_dependency()
 endif
+if with_gallium_sgx
+  subdir('drivers/sgx')
+else
+  driver_sgx = declare_dependency()
+endif
+if with_gallium_sgx_alias
+  subdir('drivers/sgx_alias')
+else
+  driver_sgx_alias = declare_dependency()
+endif
 if with_gallium_virgl
   subdir('winsys/virgl/common')
   subdir('winsys/virgl/drm')
@@ -186,6 +196,11 @@ endif
 if with_gallium_rusticl
   subdir('frontends/rusticl')
   subdir('targets/rusticl')
+endif
+if with_gallium_sgx
+  subdir('frontends/sgx')
+else
+  libsgx = []
 endif
 if with_dri
   subdir('frontends/dri')

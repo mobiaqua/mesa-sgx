@@ -10,6 +10,16 @@ PUBLIC const __DRIextension **__driDriverGetExtensions_##drivername(void) \
    return galliumdrm_driver_extensions;                                   \
 }
 
+#define DEFINE_LOADER_SGX_ENTRYPOINT(drivername)                          \
+const __DRIextension **__driDriverGetExtensions_##drivername(void);       \
+PUBLIC const __DRIextension **__driDriverGetExtensions_##drivername(void) \
+{                                                                         \
+   return sgx_driver_extensions;                                          \
+}
+
+#define DEFINE_LOADER_SGX_ALIAS_ENTRYPOINT(drivername)                    \
+   DEFINE_LOADER_SGX_ENTRYPOINT(drivername)
+
 #if defined(GALLIUM_SOFTPIPE)
 
 const __DRIextension **__driDriverGetExtensions_swrast(void);
@@ -143,4 +153,12 @@ PUBLIC const __DRIextension **__driDriverGetExtensions_zink(void)
 
 #if defined(GALLIUM_D3D12)
 DEFINE_LOADER_DRM_ENTRYPOINT(d3d12);
+#endif
+
+#if defined(GALLIUM_SGX)
+DEFINE_LOADER_SGX_ENTRYPOINT(sgx);
+#endif
+
+#if defined(GALLIUM_SGX_ALIAS)
+DEFINE_LOADER_SGX_ALIAS_ENTRYPOINT(GALLIUM_SGX_ALIAS);
 #endif
